@@ -462,3 +462,82 @@
 .footer-bottom a:hover {
   color: white;
 }
+/* 📱 Mobile */
+@media (max-width: 768px) {
+
+  .hero {
+    height: calc(100vh - 56px);
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+  }
+
+  .hero h2 {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+  }
+
+  .hero-label {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+  }
+
+  .explore-btn {
+    padding: 12px 25px;
+  }
+
+  .brands-section,
+  .products-section,
+  .sets-section {
+    padding: 70px 20px;
+  }
+
+  .brands-section h2,
+  .products-section h2,
+  .sets-section h2 {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+  }
+
+  .brand-grid,
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .brand-card {
+    height: 280px;
+  }
+
+  .set-card {
+    height: 400px;
+  }
+
+  .set-overlay {
+    padding: 25px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .site-footer {
+    padding: 60px 25px 25px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 45px;
+  }
+
+  .footer-bottom a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}s
