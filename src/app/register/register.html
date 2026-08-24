@@ -1,0 +1,160 @@
+<section class="register-page">
+
+  <div class="register-container">
+
+    <p class="register-label">MAISONÉ</p>
+
+    <h1>CREATE ACCOUNT</h1>
+
+    <p class="register-intro">
+      Join MAISONÉ and discover a curated world of luxury.
+    </p>
+
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
+
+      <!-- NAME -->
+
+      <div class="form-group">
+
+        <label for="name">FULL NAME</label>
+
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="form-control"
+          [class.is-invalid]="
+            submitted && registerForm.controls.name.invalid
+          "
+        >
+
+        @if (submitted && registerForm.controls.name.hasError('required')) {
+
+          <div class="invalid-feedback">
+            Please enter your name.
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="form-group">
+
+        <label for="email">EMAIL</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="
+            submitted && registerForm.controls.email.invalid
+          "
+        >
+
+        @if (submitted && registerForm.controls.email.hasError('required')) {
+
+          <div class="invalid-feedback">
+            Please enter your email.
+          </div>
+
+        }
+
+        @if (submitted && registerForm.controls.email.hasError('email')) {
+
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- PASSWORD -->
+
+      <div class="form-group">
+
+        <label for="password">PASSWORD</label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [class.is-invalid]="
+            submitted && registerForm.controls.password.invalid
+          "
+        >
+
+        @if (submitted && registerForm.controls.password.hasError('required')) {
+
+          <div class="invalid-feedback">
+            Please enter a password.
+          </div>
+
+        }
+
+        @if (submitted && registerForm.controls.password.hasError('minlength')) {
+
+          <div class="invalid-feedback">
+            Password must be at least 6 characters.
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- CONFIRM PASSWORD -->
+
+      <div class="form-group">
+
+        <label for="confirmPassword">
+          CONFIRM PASSWORD
+        </label>
+
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          [class.is-invalid]="
+            submitted && registerForm.controls.confirmPassword.invalid
+          "
+        >
+
+        @if (
+          submitted &&
+          registerForm.controls.confirmPassword.hasError('required')
+        ) {
+
+          <div class="invalid-feedback">
+            Please confirm your password.
+          </div>
+
+        }
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="register-btn"
+      >
+        CREATE ACCOUNT
+      </button>
+
+    </form>
+
+  </div>
+
+</section>

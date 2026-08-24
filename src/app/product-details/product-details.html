@@ -1,0 +1,75 @@
+<section class="product-details">
+
+  @if (product) {
+
+    <div class="product-details-image">
+
+      <img
+        [src]="product!.image"
+        [alt]="product!.name"
+      >
+
+    </div>
+
+    <div class="product-details-info">
+
+      <p class="product-brand">
+        {{ product!.name }}
+      </p>
+
+      <h1>
+        {{ product!.brand }}
+      </h1>
+
+      <p class="product-price">
+        {{ product!.price }}
+      </p>
+
+      <div class="product-divider"></div>
+
+      <p class="product-description">
+        {{ product!.description }}
+      </p>
+
+      <div class="product-option">
+
+        <label>SIZE</label>
+
+        <select>
+
+          <option>Select size</option>
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+
+        </select>
+
+      </div>
+
+      <button
+        type="button"
+        class="add-to-bag"
+      >
+        ADD TO BAG
+      </button>
+
+    </div>
+
+  }
+
+  @else {
+
+    <div class="product-not-found">
+
+      <h1>PRODUCT NOT FOUND</h1>
+
+      <p>
+        Sorry, this product could not be found.
+      </p>
+
+    </div>
+
+  }
+
+</section>

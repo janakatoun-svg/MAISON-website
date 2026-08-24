@@ -1,0 +1,371 @@
+<section class="collections-page">
+
+  <div class="collections-header">
+
+    <p class="section-label">MAISONÉ</p>
+
+    <h1>COLLECTIONS</h1>
+
+    <p class="collections-intro">
+      Discover a curated selection of luxury fashion,
+      accessories and timeless pieces.
+    </p>
+
+  </div>
+
+
+  <!-- FILTERS -->
+
+  <div class="collection-categories">
+
+    <button
+      [class.active]="selectedCategory === 'ALL'"
+      (click)="filterProducts('ALL')"
+    >
+      ALL
+    </button>
+
+    <button
+      [class.active]="selectedCategory === 'WOMEN'"
+      (click)="filterProducts('WOMEN')"
+    >
+      WOMEN
+    </button>
+
+    <button
+      [class.active]="selectedCategory === 'MEN'"
+      (click)="filterProducts('MEN')"
+    >
+      MEN
+    </button>
+
+    <button
+      [class.active]="selectedCategory === 'ACCESSORIES'"
+      (click)="filterProducts('ACCESSORIES')"
+    >
+      ACCESSORIES
+    </button>
+
+  </div>
+
+
+  <!-- YOUR COLLECTIONS -->
+
+  <div class="collection-grid">
+
+  @for (product of filteredProducts; track product.id) {
+
+    <div
+      class="collection-product"
+      [routerLink]="['/product', product.id]"
+    >
+
+      <app-product-card
+        [product]="product"
+        (productSelected)="onProductSelected($event)"
+      ></app-product-card>
+
+    </div>
+
+  }
+
+</div>
+
+
+  <!-- API PRODUCTS -->
+
+  <section class="api-section">
+
+    <div class="api-header">
+
+      <p class="section-label">DISCOVER</p>
+
+      <h2>BEAUTY COLLECTION</h2>
+
+      <p>
+        Explore additional products from our curated API collection.
+      </p>
+
+    </div>
+
+
+    <!-- LOADING -->
+
+    @if (loading) {
+
+      <div class="api-loading">
+
+        <div
+          class="spinner-border"
+          role="status"
+          aria-label="Loading"
+        ></div>
+
+        <p>LOADING COLLECTION...</p>
+
+      </div>
+
+    }
+
+
+    <!-- ERROR -->
+
+    @if (apiError) {
+
+      <div class="alert alert-danger text-center">
+
+        Unable to load the collection.
+        Please try again later.
+
+      </div>
+
+    }
+
+
+    <!-- API RESULTS -->
+
+    @if (!loading && !apiError) {
+
+  <div class="api-grid">
+
+    @for (product of apiProducts; track product.id) {
+
+      <div class="api-product">
+
+        <div class="api-image">
+
+          <img
+            [src]="
+              product.id === 1
+                ? '/assets/brands/chanel.jpg'
+                : product.id === 2
+                ? '/assets/brands/dior.jpeg'
+                : product.id === 3
+                ? '/assets/brands/louis-vuitton.jpg'
+                : product.id === 4
+                ? '/assets/brands/marc-jacobs.jpg'
+                : product.id === 5
+                ? '/assets/brands/fendi.webp'
+                : '/assets/brands/mosc.jpg'
+            "
+            [alt]="product.title"
+          >
+
+        </div>
+
+        <div class="api-info">
+
+          <p class="api-brand">
+            MAISONÉ EDIT
+          </p>
+
+          <h3>
+            {{ product.title }}
+          </h3>
+
+          <span>
+            COLLECTION PIECE
+          </span>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+}
+
+  </section>
+
+</section>
+
+<!-- COLLECTION INFORMATION -->
+
+<section class="container mt-5 pb-5">
+
+  <div class="text-center mb-4">
+
+    <p class="section-label">
+      MAISONÉ SERVICES
+    </p>
+
+    <h2>MORE INFO</h2>
+
+  </div>
+
+  <div class="accordion" id="collectionAccordion">
+
+    <div class="accordion-item">
+
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#shipping"
+          aria-expanded="true"
+          aria-controls="shipping"
+        >
+          SHIPPING & DELIVERY
+        </button>
+      </h2>
+
+      <div
+        id="shipping"
+        class="accordion-collapse collapse show"
+        data-bs-parent="#collectionAccordion"
+      >
+        <div class="accordion-body">
+          MAISONÉ offers worldwide delivery on selected
+          collections. Delivery times may vary depending
+          on your location and the selected piece.
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="accordion-item">
+
+      <h2 class="accordion-header">
+
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#sizing"
+          aria-expanded="false"
+          aria-controls="sizing"
+        >
+          SIZE & FIT
+        </button>
+
+      </h2>
+
+      <div
+        id="sizing"
+        class="accordion-collapse collapse"
+        data-bs-parent="#collectionAccordion"
+      >
+        <div class="accordion-body">
+          Each product is selected with attention to fit
+          and design. Please check the individual product
+          information before purchasing.
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="accordion-item">
+
+      <h2 class="accordion-header">
+
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#returns"
+          aria-expanded="false"
+          aria-controls="returns"
+        >
+          RETURNS
+        </button>
+
+      </h2>
+
+      <div
+        id="returns"
+        class="accordion-collapse collapse"
+        data-bs-parent="#collectionAccordion"
+      >
+        <div class="accordion-body">
+          Selected pieces may be eligible for return.
+          Please contact our client service team for
+          further information.
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="accordion-item">
+
+      <h2 class="accordion-header">
+
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#care"
+          aria-expanded="false"
+          aria-controls="care"
+        >
+          PRODUCT CARE
+        </button>
+
+      </h2>
+
+      <div
+        id="care"
+        class="accordion-collapse collapse"
+        data-bs-parent="#collectionAccordion"
+      >
+        <div class="accordion-body">
+          We recommend following the care instructions
+          provided with each individual piece to preserve
+          its quality and appearance.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- BOOTSTRAP PAGINATION -->
+
+<div class="container py-5">
+
+  <nav aria-label="Collection pages">
+
+    <ul class="pagination justify-content-center">
+
+      <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Previous">
+          Previous
+        </a>
+      </li>
+
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">
+          1
+        </a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#">
+          2
+        </a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#">
+          3
+        </a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          Next
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+</div>
